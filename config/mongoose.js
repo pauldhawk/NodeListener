@@ -7,9 +7,9 @@ function MongooseConfig() {
     var db = mongoose.connect(config_1.config.db);
     // Load the application models 
     require('../app/models/drone.model');
-    require('../app/models/geo.model');
-    require('../app/models/mission.model');
-    require('../app/models/ticket.model');
+    //	require('../app/models/geo.model');
+    //   require('../app/models/mission.model');
+    //  require('../app/models/ticket.model');
     // Return the Mongoose connection instance
     return db;
 }

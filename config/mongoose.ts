@@ -9,9 +9,9 @@ export function MongooseConfig(): mongoose.Mongoose {
 
 	// Load the application models 
 	require('../app/models/drone.model');
-	require('../app/models/geo.model');
-    require('../app/models/mission.model');
-    require('../app/models/ticket.model');
+//	require('../app/models/geo.model');
+ //   require('../app/models/mission.model');
+  //  require('../app/models/ticket.model');
 
 	// Return the Mongoose connection instance
 	return db;
