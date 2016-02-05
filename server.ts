@@ -1,16 +1,24 @@
-var mongoose = require('./config/mongoose'),
-	express = require('./config/express');
-import {config} from './config/config';
+import express = require('express');
+import morgan = require('morgan');
+import bodyParser = require('body-parser');
 
-// Create a new Mongoose connection instance
-var db = mongoose();
+var port = 3000;
+var app = express();
 
-// Create a new Express application instance
-var app = express(db);
+// logger 
+app.use(morgan('dev'));
 
-// Use the Express application instance to listen to the '3000' port
-app.listen(config.express.port);
+// sets file return to right Type 
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
-console.log(`Server running at http://localhost:${config.express.port}`);
+app.use(bodyParser.json());
 
-export = app;
+bodyParser.json
+
+app.listen(port);
+
+export var App= app;
+
+console.log(`Server running on ${port}`);

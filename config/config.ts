@@ -10,7 +10,7 @@ var envSettings = process.env.NODE_ENV;
 // Invoke 'strict' JavaScript mode
 'use strict';
 
-let env: ConfigEnv; 
+var env: ConfigEnv; 
 
 switch (envSettings) {
     case 'production': 
