@@ -1,7 +1,7 @@
 var express = require('express');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
-var port = 3000;
+var config_1 = require('./config/config');
 var app = express();
 // logger 
 app.use(morgan('dev'));
@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 bodyParser.json;
-app.listen(port);
+app.listen(config_1.config.express.port);
 exports.App = app;
-console.log(`Server running on ${port}`);
+console.log(`Server running on ${config_1.config.express.port}`);
 //# sourceMappingURL=server.js.map

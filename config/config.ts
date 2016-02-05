@@ -1,9 +1,7 @@
-
 import {ConfigEnv} from './env/config.interface'
 import {DevEnv} from './env/development';
 import {ProdEnv} from './env/production';
 import {TestEnv} from './env/test';
-
 
 var envSettings = process.env.NODE_ENV;
 
@@ -23,7 +21,5 @@ switch (envSettings) {
         env = DevEnv;
         break;
 }
-
-
 
 export var config = env;

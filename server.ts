@@ -1,8 +1,8 @@
 import express = require('express');
 import morgan = require('morgan');
 import bodyParser = require('body-parser');
+import {config} from './config/config';
 
-var port = 3000;
 var app = express();
 
 // logger 
@@ -17,8 +17,8 @@ app.use(bodyParser.json());
 
 bodyParser.json
 
-app.listen(port);
+app.listen(config.express.port);
 
-export var App= app;
+export var App = app;
 
-console.log(`Server running on ${port}`);
+console.log(`Server running on ${config.express.port}`);
