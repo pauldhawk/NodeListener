@@ -1,11 +1,13 @@
 var config_1 = require('./config/config');
-/// the app //////////////////
+////////////////////////////////////
+/// the web browser ////////////////
 //var app = express.ExpressConfig();
+///////////////////////////////////
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var express = require('express');
 var app = express();
-// logger 
+// logger //
 app.use(morgan('dev'));
 // sets file return to right Type 
 app.use(bodyParser.urlencoded({
@@ -13,9 +15,9 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 bodyParser.json;
-// routes
-//droneRts(app);
-// db ///////////////////////////
+///////////////////////////////////////
+////////////// db /////////////////////
+///////////////////////////////////////
 var mongoose = require('mongoose');
 var db = mongoose.connect(config_1.config.db);
 var Schema = mongoose.Schema;
@@ -60,13 +62,31 @@ a.save(function (err, a) {
         return console.error(err);
     console.log(a);
 });
-///////////// routes 
+///////////////////////////////////////////
+///////////// routes /////////////////////
+/////////////////////////////////////////
 app.route('/drones')
-    .post(function (req, res) {
-    res.json({ "foo": "bar" });
-})
-    .get(function (req, res) {
-    res.json({ "foo": "bar" });
+    .get(function (req, res, next) {
+    Drone.find({}, function (err, drones) {
+        if (err) {
+            return next(err);
+        }
+        else {
+            res.json(drones);
+        }
+    });
+});
+app.route('/drones').post(function (req, res, next) {
+    var b = new Drone(req.body);
+    b.save(function (err, b) {
+        if (err) {
+            return next(err);
+        }
+        else {
+            console.log(`${b} saved to the db`);
+            res.json(b);
+        }
+    });
 });
 app.get('/', function (req, res) {
     res.send('Hello World!');
@@ -75,9 +95,28 @@ function create(req, res) {
     res.json({ "foo": "bar" });
 }
 ;
-function list(req, res) {
-    res.json({ "foo": "bar" });
+function list(req, res, next) {
+    Drone.find({}, function (err, drones) {
+        if (err) {
+            return next(err);
+        }
+        else {
+            res.json(drones);
+        }
+    });
 }
 ;
+// function list(req: express.Request, res:  express.Response) {
+//     res.json({"foo": "bar"});
+// };
 exports.App = app;
+// exports.list = function(req, res, next) {
+//   User.find({}, function(err, users) {
+//     if (err) {
+//       return next(err);
+//     } else {
+//       res.json(users);
+//     }
+//   });
+// }; 
 //# sourceMappingURL=server.js.map

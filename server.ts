@@ -1,15 +1,17 @@
 import {config} from './config/config';
 
-/// the app //////////////////
+////////////////////////////////////
+/// the web browser ////////////////
 //var app = express.ExpressConfig();
+///////////////////////////////////
+
 import bodyParser = require('body-parser');
 import morgan = require('morgan');
 import express = require('express');
 
-
 var app = express();
 
-// logger 
+// logger //
 app.use(morgan('dev'));
 
 // sets file return to right Type 
@@ -22,11 +24,10 @@ app.use(bodyParser.json());
 bodyParser.json
 
 
-// routes
-//droneRts(app);
+///////////////////////////////////////
+////////////// db /////////////////////
+///////////////////////////////////////
 
-
-// db ///////////////////////////
 import mongoose = require('mongoose');
 var db = mongoose.connect(config.db);
 
@@ -77,15 +78,36 @@ a.save(function (err, a) {
   console.log(a);
 });
 
+///////////////////////////////////////////
+///////////// routes /////////////////////
+/////////////////////////////////////////
 
-///////////// routes 
-    app.route('/drones')
-     .post(function (req, res) {
-        res.json({"foo": "bar"});
-})
-     .get(function (req, res) {
-        res.json({"foo": "bar"});
-    });
+app.route('/drones')
+     .get(
+         function (req: express.Request, res:  express.Response, next: any) {
+             Drone.find({}, 
+                function(err, drones) {
+                    if (err) {
+                        return next(err);
+                    } else {
+                        res.json(drones);
+                    }
+                })
+        });
+        
+app.route('/drones').post(
+         function (req: express.Request, res:  express.Response, next: any) {
+             var b = new Drone(req.body);
+             b.save(
+                function(err : any, b: any) {
+                    if (err) {
+                        return next(err);
+                    } else {
+                        console.log(`${b} saved to the db`);
+                        res.json(b);
+                    }
+                })
+        });
 
 app.get('/', function (req, res) {
   res.send('Hello World!');
@@ -95,8 +117,31 @@ function create(req: express.Request, res:  express.Response) {
     res.json({"foo": "bar"});
 };
 
-function list(req: express.Request, res:  express.Response) {
-    res.json({"foo": "bar"});
+
+function list (req: express.Request, res:  express.Response, next: any) {
+  Drone.find({}, function(err, drones) {
+    if (err) {
+      return next(err);
+    } else {
+      res.json(drones);
+    }
+  });
 };
 
+// function list(req: express.Request, res:  express.Response) {
+//     res.json({"foo": "bar"});
+// };
+
 export var App = app;
+
+
+
+// exports.list = function(req, res, next) {
+//   User.find({}, function(err, users) {
+//     if (err) {
+//       return next(err);
+//     } else {
+//       res.json(users);
+//     }
+//   });
+// };
