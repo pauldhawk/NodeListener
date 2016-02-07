@@ -6,7 +6,7 @@ import {ConfigEnv} from './config.interface';
 
 export var DevEnv: ConfigEnv = {
     environment: 'development' ,
-    db: 'mongodb://localhost/medfleet',
+    db: 'mongodb://localhost/medfleettest',
     sessionSecret: 'BlueDemons',
     google: {
         clientID: 'Google Application ID',

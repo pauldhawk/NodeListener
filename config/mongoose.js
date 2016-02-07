@@ -1,7 +1,6 @@
-"use strict";
 // Load the module dependencies
-const config_1 = require('./config');
-const mongoose = require('mongoose');
+var config_1 = require('./config');
+var mongoose = require('mongoose');
 // Define the Mongoose configuration method
 function MongooseConfig() {
     // Use Mongoose to connect to MongoDB

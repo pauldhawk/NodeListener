@@ -3,7 +3,7 @@
 // Set the 'development' environment configuration object
 exports.DevEnv = {
     environment: 'development',
-    db: 'mongodb://localhost/medfleet',
+    db: 'mongodb://localhost/medfleettest',
     sessionSecret: 'BlueDemons',
     google: {
         clientID: 'Google Application ID',
