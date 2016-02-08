@@ -21,7 +21,6 @@
     "express-session": "~1.7.6"
   },
   "devDependencies": {
-    "express": "^4.13.4",
     "gulp": "^3.9.0",
     "gulp-livereload": "^3.8.1",
     "gulp-nodemon": "^2.0.6",
