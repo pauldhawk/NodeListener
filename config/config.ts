@@ -3,6 +3,8 @@ import {DevEnv} from './env/development';
 import {ProdEnv} from './env/production';
 import {TestEnv} from './env/test';
 
+// to change 
+// export NODE_ENV=production
 var envSettings = process.env.NODE_ENV;
 
 // Invoke 'strict' JavaScript mode

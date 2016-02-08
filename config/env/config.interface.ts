@@ -1,7 +1,16 @@
 export interface ConfigEnv {
     environment: string,
-	db: string,
-	sessionSecret: string,
+	db: {
+        name: string,
+	    sessionSecret: string,
+        options: {
+        db: { native_parser: boolean },
+        server: { poolSize: number },
+        replset: { rs_name: string },
+        user: string,
+        pass: string
+        },
+    }
 	google: {
 		clientID: string,
 		clientSecret: string,
@@ -11,3 +20,6 @@ export interface ConfigEnv {
         port: number;
     }
 };
+
+
+

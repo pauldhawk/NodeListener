@@ -3,11 +3,20 @@
 // Set the 'development' environment configuration object
 exports.TestEnv = {
     environment: 'test',
-    db: 'mongodb://localhost/medfleet',
-    sessionSecret: 'BlueDemons',
+    db: {
+        name: 'mongodb://localhost/medfleet',
+        sessionSecret: 'BlueDemons',
+        options: {
+            db: { native_parser: true },
+            server: { poolSize: 5 },
+            replset: { rs_name: 'myReplicaSetName' },
+            user: 'phawk',
+            pass: 'Blue Demons'
+        }
+    },
     google: {
         clientID: 'Google Application ID',
-        clientSecret: 'Google Application Secret',
+        clientSecret: 'AIzaSyAbPi-tYfg2yibUTQL2Zwrp4-dXHE6iBG8',
         callbackURL: 'http://localhost:3000/oauth/google/callback'
     },
     express: {

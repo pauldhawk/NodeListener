@@ -29,7 +29,7 @@ bodyParser.json
 ///////////////////////////////////////
 
 import mongoose = require('mongoose');
-var db = mongoose.connect(config.db);
+var db = mongoose.connect(config.db.name, config.db.options);
 
 var Schema = mongoose.Schema;
 

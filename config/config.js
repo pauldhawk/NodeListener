@@ -1,6 +1,8 @@
 var development_1 = require('./env/development');
 var production_1 = require('./env/production');
 var test_1 = require('./env/test');
+// to change 
+// export NODE_ENV=production
 var envSettings = process.env.NODE_ENV;
 // Invoke 'strict' JavaScript mode
 'use strict';

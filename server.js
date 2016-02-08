@@ -19,7 +19,7 @@ bodyParser.json;
 ////////////// db /////////////////////
 ///////////////////////////////////////
 var mongoose = require('mongoose');
-var db = mongoose.connect(config_1.config.db);
+var db = mongoose.connect(config_1.config.db.name, config_1.config.db.options);
 var Schema = mongoose.Schema;
 /// db schema 
 var droneSchema = new mongoose.Schema({
